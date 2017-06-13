@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
   s.version  = '1.0.1'
   s.ios.deployment_target = '8.0'
   s.tvos.deployment_target = '9.0'
-  s.license  =  { :type => 'MIT', :file => 'LICENSE.txt' }
+  s.license  =  { :type => 'MIT', :file => 'LICENSE' }
   s.summary  = 'A clean and lightweight progress HUD for your iOS'
   s.homepage = 'https://github.com/mamie42/WXProgressHUD'
   s.authors   = {'mamie42'=>'mamie42@126.com','Sam Vermette' => 'hello@samvermette.com', 'Tobias Tiemerding' => 'tobias@tiemerding.com' }
