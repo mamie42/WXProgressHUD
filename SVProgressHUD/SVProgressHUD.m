@@ -315,14 +315,9 @@ static const CGFloat SVProgressHUDLabelSpacing = 8.0f;
             // Show
             [strongSelf showStatus:status];
             
-            
-            // An image will be dismissed automatically. Therefore, we start a timer
-            // which then will call dismiss after the predefined duration
-            strongSelf.fadeOutTimer = [NSTimer timerWithTimeInterval:duration target:strongSelf selector:@selector(dismiss) userInfo:nil repeats:NO];
-            [[NSRunLoop mainRunLoop] addTimer:strongSelf.fadeOutTimer forMode:NSRunLoopCommonModes];
+            [strongSelf dismissWithDelay:2 completion:nil];
         }
     }];
-
 }
 
 + (void)showInfoWithStatus:(NSString*)status {
@@ -459,7 +454,7 @@ static const CGFloat SVProgressHUDLabelSpacing = 8.0f;
         _backgroundColor = [UIColor clearColor];
         _foregroundColor = [UIColor blackColor];
         _backgroundLayerColor = [UIColor colorWithWhite:0 alpha:0.4];
-        
+
         // Set default values
         _defaultPosition=SVProgressHUDPositionCenter;
         
@@ -922,7 +917,7 @@ static const CGFloat SVProgressHUDLabelSpacing = 8.0f;
             [strongSelf cancelIndefiniteAnimatedViewAnimation];
             
             // Update imageView
-            UIColor *tintColor = strongSelf.foregroundColorForStyle;
+            UIColor *tintColor =strongSelf.foregroundColorForStyle;
             UIImage *tintedImage = image;
             if (image.renderingMode != UIImageRenderingModeAlwaysTemplate) {
                 tintedImage = [image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
@@ -1211,7 +1206,6 @@ static const CGFloat SVProgressHUDLabelSpacing = 8.0f;
         activityIndicatorView.color = self.foregroundColorForStyle;
     }
     [_indefiniteAnimatedView sizeToFit];
-    
     return _indefiniteAnimatedView;
 }
 
@@ -1224,7 +1218,6 @@ static const CGFloat SVProgressHUDLabelSpacing = 8.0f;
     _ringView.strokeColor = self.foregroundColorForStyle;
     _ringView.strokeThickness = self.ringThickness;
     _ringView.radius = self.statusLabel.text ? self.ringRadius : self.ringNoTextRadius;
-    
     return _ringView;
 }
 
@@ -1238,7 +1231,6 @@ static const CGFloat SVProgressHUDLabelSpacing = 8.0f;
     _backgroundRingView.strokeColor = [self.foregroundColorForStyle colorWithAlphaComponent:0.1f];
     _backgroundRingView.strokeThickness = self.ringThickness;
     _backgroundRingView.radius = self.statusLabel.text ? self.ringRadius : self.ringNoTextRadius;
-    
     return _backgroundRingView;
 }
 
@@ -1328,7 +1320,6 @@ static const CGFloat SVProgressHUDLabelSpacing = 8.0f;
 #else
     _controlView.frame = [UIScreen mainScreen].bounds;
 #endif
-    
     return _controlView;
 }
 
@@ -1376,7 +1367,6 @@ static const CGFloat SVProgressHUDLabelSpacing = 8.0f;
         _backgroundRadialGradientLayer.gradientCenter = gradientCenter;
         [_backgroundRadialGradientLayer setNeedsDisplay];
     }
-    
     return _backgroundView;
 }
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 80000
@@ -1460,7 +1450,6 @@ static const CGFloat SVProgressHUDLabelSpacing = 8.0f;
         [self.hudView addSubview:_imageView];
 #endif
     }
-    
     return _imageView;
 }
 
